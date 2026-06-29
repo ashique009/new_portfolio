@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Tags -->
+  <title>Muhammed Ashique | Python Full Stack Developer</title>
+  <meta name="description" content="Portfolio of Muhammed Ashique, a Python Full Stack Developer Trainee at Brototype. Specializing in Python, Django, PostgreSQL, JavaScript, and building high-performance web systems.">
+  <meta name="keywords" content="Muhammed Ashique, Ashique, Python Developer, Full Stack Developer, Django, PostgreSQL, JavaScript, Brototype Trainee, REST APIs, Web Developer, Portfolio">
+  <meta name="author" content="Muhammed Ashique">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Muhammed Ashique | Python Full Stack Developer">
+  <meta property="og:description" content="Explore the digital portfolio of Muhammed Ashique, showcasing clean backend architectures, relational databases, and responsive web platforms.">
+  <meta property="og:image" content="assets/portrait.png">
+  <meta property="og:url" content="https://github.com/ashique009">
+  <meta property="og:site_name" content="Muhammed Ashique Portfolio">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Muhammed Ashique | Python Full Stack Developer">
+  <meta name="twitter:description" content="Explore the digital portfolio of Muhammed Ashique, showcasing clean backend architectures, relational databases, and responsive web platforms.">
+  <meta name="twitter:image" content="assets/portrait.png">
+  <meta name="twitter:site" content="@ashique009">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/portrait.png">
+  <link rel="apple-touch-icon" href="assets/portrait.png">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="loading">
+
+  <!-- Premium Loader Screen -->
+  <div id="loader-screen">
+    <div class="loader-container">
+      <svg class="loader-circle-svg" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" stroke="#D4AF37" stroke-width="2" fill="transparent" />
+      </svg>
+      <span class="loader-char-a" id="loader-char-a">A</span>
+    </div>
+    <div class="loader-title" id="loader-title"></div>
+    <div class="loader-progress-container">
+      <div class="loader-progress-bar" id="loader-progress-bar"></div>
+    </div>
+    <div class="loader-percentage" id="loader-percentage">0%</div>
+  </div>
+
+  <!-- Custom Cursors -->
+  <div id="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring"></div>
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress"></div>
+
+  <!-- Canvas for Particle Background -->
+  <canvas id="smoke-canvas"></canvas>
+
+  <!-- Ambient Glow Effects -->
+  <div class="ambient-glow glow-top-left"></div>
+  <div class="ambient-glow glow-bottom-right"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="logo">ASHIQUE</div>
+    <div class="nav-links">
+      <a href="#" class="nav-link" data-scroll-to="hero">Home</a>
+      <a href="#" class="nav-link" data-scroll-to="galaxy-section">Galaxy</a>
+      <a href="#" class="nav-link" data-scroll-to="details-container">Portfolio</a>
+      <button class="nav-btn magnetic-btn" data-scroll-to="contact-section">Contact Now</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-subtitle-container">
+          <span class="gold-line"></span>
+          <span class="hero-subtitle" id="hero-subtitle"></span><span class="typing-cursor">|</span>
+        </div>
+        <div class="hero-intro" id="hero-intro">Hello, I'm</div>
+        <h1 class="hero-title" id="hero-title">
+          ASHIQUE
+        </h1>
+        <p class="hero-tagline" id="hero-tagline">
+          Building premium digital experiences through clean backend code, robust database architectures, and elegant user designs.
+        </p>
+        <div class="hero-actions" id="hero-actions">
+          <button class="magnetic-btn btn-primary" data-scroll-to="galaxy-section">Explore My Universe</button>
+          <button class="magnetic-btn btn-secondary" data-scroll-to="contact-section">Download Resume</button>
+        </div>
+      </div>
+      <div class="hero-image-container" id="hero-image-container">
+        <div class="profile-halo"></div>
+        <div class="profile-rays"></div>
+        <div class="profile-frame" id="profile-frame">
+          <div class="mask-sheen"></div>
+          <img src="assets/img 1.png" alt="Ashique Portrait" class="profile-image" decoding="async">
+        </div>
+      </div>
+    </div>
+    
+    <div class="scroll-indicator" data-scroll-to="galaxy-section">
+      <span class="scroll-text">Scroll to Orbit</span>
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Galaxy Section -->
+  <section class="galaxy-section" id="galaxy-section">
+    <h2 class="galaxy-title">The Interactive Galaxy</h2>
+    <p class="galaxy-subtitle">
+      Click a planet to navigate the camera and open details, or <span>drag to rotate</span> the solar system.
+    </p>
+    
+    <div id="galaxy-parallax-container">
+      <div class="galaxy-wrapper" id="galaxy-wrapper">
+        <!-- Sun Core -->
+        <div class="galaxy-sun">
+          <div class="sun-core"></div>
+        </div>
+        
+        <!-- Concentric Orbits (Sizes updated dynamically by script) -->
+        <div class="orbit-line"></div>
+        <div class="orbit-line"></div>
+        <div class="orbit-line"></div>
+        <div class="orbit-line"></div>
+        <div class="orbit-line"></div>
+        <div class="orbit-line"></div>
+        <div class="orbit-line"></div>
+
+        <!-- Planet Nodes -->
+        <div class="planet" id="planet-about" data-section="about-section">
+          <i class="fa-solid fa-user"></i>
+          <span class="planet-label">About</span>
+        </div>
+
+        <div class="planet" id="planet-skills" data-section="skills-section">
+          <i class="fa-solid fa-gem"></i>
+          <span class="planet-label">Skills</span>
+        </div>
+
+        <div class="planet" id="planet-projects" data-section="projects-section">
+          <i class="fa-solid fa-code"></i>
+          <span class="planet-label">Projects</span>
+        </div>
+
+        <div class="planet" id="planet-experience" data-section="experience-section">
+          <i class="fa-solid fa-briefcase"></i>
+          <span class="planet-label">Experience</span>
+        </div>
+
+        <div class="planet" id="planet-education" data-section="education-section">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span class="planet-label">Education</span>
+        </div>
+
+        <div class="planet" id="planet-achievements" data-section="achievements-section">
+          <i class="fa-solid fa-trophy"></i>
+          <span class="planet-label">Achievements</span>
+        </div>
+
+        <div class="planet" id="planet-contact" data-section="contact-section">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span class="planet-label">Contact</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed Content Container -->
+  <main id="details-container">
+    
+    <!-- ABOUT ME SECTION -->
+    <section class="detail-section" id="about-section">
+      <div class="section-header">
+        <span class="section-number">01 // IDENTITY</span>
+        <h2 class="section-title">About Me</h2>
+        <p class="section-desc">Passionate about building modern, scalable, and user-friendly web applications.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm <span>Ashique</span>, a Python Full Stack Developer currently undergoing intensive industry-focused training at Brototype. I enjoy building responsive, scalable, and user-friendly web applications using Python, Django, PostgreSQL, JavaScript, HTML, and CSS.
+          </p>
+          <p>
+            My focus is on writing clean, maintainable code while continuously improving my backend development, database design, API development, and problem-solving skills through real-world projects.
+          </p>
+          <p>
+            I'm passionate about learning new technologies, solving practical problems, and growing into a professional software engineer while creating meaningful digital experiences.
+          </p>
+        </div>
+        <div class="about-info-grid">
+          <div class="info-item">
+            <span class="info-label">Current Role</span>
+            <span class="info-value">Python Full Stack Trainee</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Learning Platform</span>
+            <span class="info-value">Brototype</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Primary Stack</span>
+            <span class="info-value">Python • Django • PostgreSQL</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Projects Completed</span>
+            <span class="info-value" data-counter="3">0+</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Learning Status</span>
+            <span class="info-value">Active</span>
+          </div>
+        </div>
+      </div>
+      <div class="close-section-container">
+        <button class="close-section-btn magnetic-btn"><i class="fa-solid fa-arrow-left"></i> Return to Universe</button>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="detail-section" id="skills-section">
+      <div class="section-header">
+        <span class="section-number">02 // CAPABILITIES</span>
+        <h2 class="section-title">Skills & Technologies</h2>
+        <p class="section-desc">A curated set of technologies and developer tools studied and utilized daily.</p>
+      </div>
+      <div class="skills-container">
+        <!-- Programming & Web Core -->
+        <div class="skills-category">
+          <h3 class="category-title"><i class="fa-solid fa-code"></i> Core & Web Languages</h3>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <i class="fa-brands fa-python"></i>
+              <span class="skill-name">Python</span>
+            </div>
+            <div class="skill-card">
+              <i class="fa-solid fa-database"></i>
+              <span class="skill-name">SQL</span>
+            </div>
+            
+            <div class="skill-card">
+              <i class="fa-brands fa-html5"></i>
+              <span class="skill-name">HTML</span>
+            </div>
+            <div class="skill-card">
+              <i class="fa-brands fa-css3-alt"></i>
+              <span class="skill-name">CSS</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backend & Databases -->
+        <div class="skills-category">
+          <h3 class="category-title"><i class="fa-solid fa-server"></i> Backend & Database Systems</h3>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <i class="fa-solid fa-network-wired"></i>
+              <span class="skill-name">Django</span>
+            </div>
+            <div class="skill-card">
+              <i class="fa-solid fa-table"></i>
+              <span class="skill-name">PostgreSQL</span>
+            </div>
+            <div class="skill-card">
+              <i class="fa-solid fa-laptop-code"></i>
+              <span class="skill-name">FastAPI (Learning)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Development Utilities -->
+        <div class="skills-category">
+          <h3 class="category-title"><i class="fa-solid fa-sliders"></i> Developer Environment</h3>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <i class="fa-brands fa-git-alt"></i>
+              <span class="skill-name">Git</span>
+            </div>
+            <div class="skill-card">
+              <i class="fa-brands fa-github"></i>
+              <span class="skill-name">GitHub</span>
+            </div>
+            <div class="skill-card">
+              <i class="fa-brands fa-linux"></i>
+              <span class="skill-name">Windows OS</span>
+            </div>
+            <div class="skill-card">
+              <i class="fa-solid fa-terminal"></i>
+              <span class="skill-name">VS Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="close-section-container">
+        <button class="close-section-btn magnetic-btn"><i class="fa-solid fa-arrow-left"></i> Return to Universe</button>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="detail-section" id="projects-section">
+      <div class="section-header">
+        <span class="section-number">03 // INVENTIONS</span>
+        <h2 class="section-title">Projects Showcase</h2>
+        <p class="section-desc">Engineering backend frameworks and API structures with structural integrity.</p>
+      </div>
+      <div class="projects-grid">
+        <!-- Velora Project -->
+        <article class="project-card" data-tilt>
+          <div class="project-img-wrapper">
+            <img src="assets/project_velora.png" alt="Velora Platform" class="project-image" loading="lazy" decoding="async">
+            <div class="project-overlay"></div>
+            <div class="project-tags">
+              <span class="project-tag">Python</span>
+              <span class="project-tag">Django</span>
+              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">REST API</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">Velora Backend</h3>
+            <p class="project-desc">A high-performance Python API gateway service designed for modular state synchronization, featuring database scaling and token authorization.</p>
+            <div class="project-links">
+              <a href="https://velora-4ycn.onrender.com" class="project-link primary" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+              <a href="https://github.com/ashique009/velora" class="project-link secondary" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Code Repository</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 Placeholder -->
+        <article class="project-card" data-tilt style="opacity:0.65;">
+          <div class="project-img-wrapper">
+            <img src="assets/project_luxe.png" alt="System Project" class="project-image" style="filter: blur(5px) grayscale(100%);" loading="lazy" decoding="async">
+            <div class="project-overlay"></div>
+            <div class="project-tags">
+              <span class="project-tag">FastAPI</span>
+              <span class="project-tag">Incubating</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">Project Nexis</h3>
+            <p class="project-desc">An automated asynchronous microservice platform currently in design. Undergoing mock-up tests and route definitions.</p>
+            <div class="project-links">
+              <a href="#" class="project-link secondary" style="pointer-events: none; opacity: 0.5;"><i class="fa-solid fa-lock"></i> Classified</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 Placeholder -->
+        <article class="project-card" data-tilt style="opacity:0.65;">
+          <div class="project-img-wrapper">
+            <img src="assets/project_chronos.png" alt="Database Tool" class="project-image" style="filter: blur(5px) grayscale(100%);" loading="lazy" decoding="async">
+            <div class="project-overlay"></div>
+            <div class="project-tags">
+              <span class="project-tag">SQL</span>
+              <span class="project-tag">PostgreSQL</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <h3 class="project-title">Query Engine</h3>
+            <p class="project-desc">A database query optimizer utility engineered to analyze join statements and suggest database index placement.</p>
+            <div class="project-links">
+              <a href="#" class="project-link secondary" style="pointer-events: none; opacity: 0.5;"><i class="fa-solid fa-lock"></i> Classified</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="close-section-container">
+        <button class="close-section-btn magnetic-btn"><i class="fa-solid fa-arrow-left"></i> Return to Universe</button>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section class="detail-section" id="experience-section">
+      <div class="section-header">
+        <span class="section-number">04 // EVOLUTION</span>
+        <h2 class="section-title">Academic & Learning Path</h2>
+        <p class="section-desc">Timeline of academic growth and technical specialization in backend services.</p>
+      </div>
+      <div class="timeline">
+        <!-- Exp Item 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2025 — PRESENT</div>
+          <div class="timeline-content">
+            <h3 class="timeline-role">Python Full Stack Development Trainee</h3>
+            <h4 class="timeline-company">Brototype</h4>
+            <p class="timeline-desc">
+              Currently undergoing intensive industry-focused training in Python Full Stack Development, building real-world web applications using Python, Django, PostgreSQL, JavaScript, Git, and modern development practices.
+            </p>
+            <p class="timeline-desc" style="margin-top: 10px;">
+              Working on hands-on projects, backend development, database design, authentication systems, and responsive web applications while following industry standards.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="close-section-container">
+        <button class="close-section-btn magnetic-btn"><i class="fa-solid fa-arrow-left"></i> Return to Universe</button>
+      </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section class="detail-section" id="education-section">
+      <div class="section-header">
+        <span class="section-number">05 // SCHOLASTIC</span>
+        <h2 class="section-title">Education</h2>
+        <p class="section-desc">Python Full Stack Development</p>
+      </div>
+      <div class="timeline">
+        <!-- Edu Item 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2025 — PRESENT</div>
+          <div class="timeline-content">
+            <h3 class="timeline-role">Python Full Stack Development</h3>
+            <h4 class="timeline-company">Brototype</h4>
+            <p class="timeline-desc">
+              Currently pursuing an intensive industry-focused training program in Python Full Stack Development, focusing on Python, Django, PostgreSQL, JavaScript, Git, REST APIs, and building real-world web applications.
+            </p>
+          </div>
+        </div>
+
+        <!-- Edu Item 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023 — 2025</div>
+          <div class="timeline-content">
+            <h3 class="timeline-role">Higher Secondary Education (Humanities)</h3>
+            <h4 class="timeline-company">GVHSS Keezhuparamba</h4>
+            <p class="timeline-desc">
+              Completed Higher Secondary Education with a Humanities background, strengthening communication, analytical thinking, and problem-solving skills while preparing for a career in software development.
+            </p>
+          </div>
+        </div>
+
+        <!-- Edu Item 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2021 — 2022</div>
+          <div class="timeline-content">
+            <h3 class="timeline-role">Secondary School Education (SSLC)</h3>
+            <h4 class="timeline-company">Sullamussalam Oriental Higher Secondary School</h4>
+            <p class="timeline-desc">
+              Successfully completed Secondary School Education, building a strong academic foundation and developing discipline, adaptability, and continuous learning skills.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="close-section-container">
+        <button class="close-section-btn magnetic-btn"><i class="fa-solid fa-arrow-left"></i> Return to Universe</button>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section class="detail-section" id="achievements-section">
+      <div class="section-header">
+        <span class="section-number">06 // RECOGNITIONS</span>
+        <h2 class="section-title">Achievements</h2>
+        <p class="section-desc">Milestones achieved during my software development studies.</p>
+      </div>
+      <div class="achievements-grid">
+        <!-- Ach 1 -->
+        <div class="achievement-card">
+          <div class="achievement-icon-wrapper">
+            <i class="fa-brands fa-python"></i>
+          </div>
+          <h3 class="achievement-title">Framework Mastery</h3>
+          <div class="achievement-issuer">Python & Django</div>
+          <p class="achievement-desc">
+            Constructed modular backend applications, API authentication tokens, and advanced relational database schemas.
+          </p>
+        </div>
+      </div>
+      <div class="close-section-container">
+        <button class="close-section-btn magnetic-btn"><i class="fa-solid fa-arrow-left"></i> Return to Universe</button>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="detail-section" id="contact-section">
+      <div class="section-header">
+        <span class="section-number">07 // DIALOGUE</span>
+        <h2 class="section-title">Connect With Me</h2>
+        <p class="section-desc">Establish contact or review coding repositories and professional qualifications.</p>
+         <p class="contact-info-desc">
+          Whether you have a project, an opportunity, or just want to connect, feel free to reach out. I'm always open to discussing software development, new ideas, and exciting collaborations.
+        </p>
+        
+        <div class="contact-buttons-container">
+          <a href="#" class="contact-btn magnetic-btn">
+            <i class="fa-solid fa-file-arrow-down"></i>
+            <span>Download Resume</span>
+          </a>
+          <a href="https://www.linkedin.com/in/muhammed-ashique-ab365b369" class="contact-btn magnetic-btn" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-linkedin-in"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/ashique009" class="contact-btn magnetic-btn" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="mailto:ashiquekavanoor009@gmail.com" class="contact-btn magnetic-btn">
+            <i class="fa-solid fa-envelope"></i>
+            <span>Email Me</span>
+          </a>
+        </div>
+      </div>
+      <div class="close-section-container">
+        <button class="close-section-btn magnetic-btn"><i class="fa-solid fa-arrow-left"></i> Return to Universe</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">ASHIQUE</div>
+    <div class="footer-divider"></div>
+    <div class="footer-links">
+      <a href="#" class="footer-link" data-scroll-to="hero">Home</a>
+      <a href="#" class="footer-link" data-scroll-to="galaxy-section">Galaxy</a>
+      <a href="#" class="footer-link" data-scroll-to="details-container">Portfolio</a>
+      <a href="#" class="footer-link" data-scroll-to="contact-section">Contact</a>
+    </div>
+    <div class="footer-copyright">
+      &copy; 2026 Ashique. Designed with Luxury. Built with Precision.
+    </div>
+  </footer>
+
+  <!-- Script Libraries via CDNs -->
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <!-- Main Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
