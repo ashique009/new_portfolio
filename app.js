@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initGalaxyNavigation(() => isGalaxyInView);
   init3DTiltCards(prefersReducedMotion);
   initScrollProgress();
+  initProjectModal();
 });
 
 /* =========================================================================
@@ -1221,3 +1222,75 @@ function initMagneticButtons(prefersReducedMotion) {
     }
   });
 }
+
+/* =========================================================================
+   11. Project Details Modal System
+   ========================================================================= */
+function initProjectModal() {
+  const modal = document.getElementById('kifa-modal');
+  if (!modal) return;
+
+  const openTriggers = document.querySelectorAll('.kifa-modal-trigger');
+  const closeBtn = document.getElementById('kifa-modal-close');
+  const backdrop = document.getElementById('kifa-modal-backdrop');
+
+  function openModal() {
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (window.lenis) window.lenis.stop();
+    else if (lenis) lenis.stop();
+
+    const container = modal.querySelector('.modal-container');
+    if (container) {
+      gsap.fromTo(container,
+        { scale: 0.92, y: 30, opacity: 0 },
+        { scale: 1, y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }
+      );
+    }
+  }
+
+  function closeModal() {
+    const container = modal.querySelector('.modal-container');
+    if (container) {
+      gsap.to(container, {
+        scale: 0.94,
+        y: 20,
+        opacity: 0,
+        duration: 0.28,
+        ease: "power2.in",
+        onComplete: () => {
+          modal.classList.remove('active');
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+          if (window.lenis) window.lenis.start();
+          else if (lenis) lenis.start();
+        }
+      });
+    } else {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (window.lenis) window.lenis.start();
+      else if (lenis) lenis.start();
+    }
+  }
+
+  openTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openModal();
+    });
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (backdrop) backdrop.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+}
+

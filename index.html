@@ -215,7 +215,7 @@
           </div>
           <div class="info-item">
             <span class="info-label">Projects Completed</span>
-            <span class="info-value" data-counter="3">0+</span>
+            <span class="info-value" data-counter="4">0+</span>
           </div>
           <div class="info-item">
             <span class="info-label">Learning Status</span>
@@ -315,6 +315,48 @@
         <p class="section-desc">Engineering backend frameworks and API structures with structural integrity.</p>
       </div>
       <div class="projects-grid">
+        <!-- KIFA FoodCo Project -->
+        <article class="project-card featured" data-tilt>
+          <div class="project-img-wrapper">
+            <span class="featured-badge client-badge"><i class="fa-solid fa-circle-check"></i> Client Project • Delivered</span>
+            <img src="assets/project_kifa.png" alt="KIFA FoodCo Management System" class="project-image" loading="lazy" decoding="async">
+            <div class="project-overlay"></div>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">TypeScript</span>
+              <span class="project-tag">Tailwind CSS</span>
+              <span class="project-tag">Node.js</span>
+              <span class="project-tag">Express</span>
+              <span class="project-tag">PostgreSQL</span>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-header-meta">
+              <span class="project-category-label">Full-Stack Development | Real Client Project</span>
+              <span class="project-status-pill"><i class="fa-solid fa-check"></i> Completed & Handed Over</span>
+            </div>
+            <h3 class="project-title">KIFA FoodCo Management System</h3>
+            <p class="project-desc">A full-stack business management system developed and deployed for KIFA FoodCo, a wholesale bakery distribution business. The application streamlines inventory, purchasing, sales, payments, shop management, and delivery trip operations.</p>
+            
+            <ul class="project-features">
+              <li><i class="fa-solid fa-boxes-stacked"></i> Inventory & Stock</li>
+              <li><i class="fa-solid fa-warehouse"></i> Godown & Batches</li>
+              <li><i class="fa-solid fa-truck"></i> Trips, Vehicles & Staff</li>
+              <li><i class="fa-solid fa-shop"></i> Shops & Balance Ledgers</li>
+              <li><i class="fa-solid fa-file-invoice-dollar"></i> Sales, Invoices & Payments</li>
+              <li><i class="fa-solid fa-handshake"></i> Purchase & Suppliers</li>
+              <li><i class="fa-solid fa-rotate-left"></i> Returns Management</li>
+              <li><i class="fa-solid fa-user-shield"></i> Admin & Role-Based Auth</li>
+            </ul>
+
+            <div class="project-links">
+              <a href="https://kifa-foodco-management.pages.dev" class="project-link primary" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+              <a href="https://github.com/ashique009/kifa-foodco-management" class="project-link secondary" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Code Repository</a>
+              <button class="project-link tertiary kifa-modal-trigger" type="button"><i class="fa-solid fa-circle-info"></i> Project Details</button>
+            </div>
+          </div>
+        </article>
+
         <!-- Lynqo Project -->
         <article class="project-card featured" data-tilt>
           <div class="project-img-wrapper">
@@ -570,6 +612,140 @@
       &copy; 2026 Ashique. Designed with Luxury. Built with Precision.
     </div>
   </footer>
+
+  <!-- KIFA Project Detail Modal -->
+  <div class="project-modal" id="kifa-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="kifa-modal-title">
+    <div class="modal-backdrop" id="kifa-modal-backdrop"></div>
+    <div class="modal-container">
+      <button class="modal-close-btn" id="kifa-modal-close" aria-label="Close project details">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="modal-badge-group">
+            <span class="featured-badge client-badge"><i class="fa-solid fa-circle-check"></i> Real-World Client Project</span>
+            <span class="modal-handover-pill"><i class="fa-solid fa-handshake-simple"></i> Successfully Completed & Handed Over</span>
+          </div>
+          <h2 class="modal-title" id="kifa-modal-title">KIFA FoodCo Management System</h2>
+          <p class="modal-subtitle">Full-Stack Wholesale Bakery Operations & Logistics Distribution Platform</p>
+        </div>
+
+        <div class="modal-image-wrapper">
+          <img src="assets/project_kifa.png" alt="KIFA FoodCo Interface Overview" class="modal-image" loading="lazy">
+        </div>
+
+        <div class="modal-body">
+          <div class="modal-section">
+            <h3 class="modal-section-title"><i class="fa-solid fa-compass"></i> Project Overview</h3>
+            <p class="modal-text">
+              A comprehensive, production-grade business management platform developed and deployed for <strong>KIFA FoodCo</strong>, a wholesale bakery manufacturing and multi-vehicle distribution enterprise. The system replaces fragmented manual records with an automated, synchronized workflow spanning godown stock control, dynamic delivery routes, shop ledger bookkeeping, and end-of-trip settlement.
+            </p>
+          </div>
+
+          <div class="modal-section">
+            <h3 class="modal-section-title"><i class="fa-solid fa-list-check"></i> Key Operational Modules</h3>
+            <div class="modal-features-grid">
+              <div class="modal-feature-card">
+                <div class="modal-feature-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                <div>
+                  <h4 class="modal-feature-name">Inventory & Stock Management</h4>
+                  <p class="modal-feature-desc">Real-time stock counts across production batches, units, and godown reserve levels with automated low-stock warnings.</p>
+                </div>
+              </div>
+
+              <div class="modal-feature-card">
+                <div class="modal-feature-icon"><i class="fa-solid fa-warehouse"></i></div>
+                <div>
+                  <h4 class="modal-feature-name">Product Batches & Godown Control</h4>
+                  <p class="modal-feature-desc">FIFO batch management, manufacture/expiry tracking, and synchronized warehouse dispatch allocations.</p>
+                </div>
+              </div>
+
+              <div class="modal-feature-card">
+                <div class="modal-feature-icon"><i class="fa-solid fa-truck-moving"></i></div>
+                <div>
+                  <h4 class="modal-feature-name">Delivery Trips, Vehicles & Drivers</h4>
+                  <p class="modal-feature-desc">Daily distribution run dispatching, vehicle fleet assignments, driver/sales staff load sheets, and trip reconciliation.</p>
+                </div>
+              </div>
+
+              <div class="modal-feature-card">
+                <div class="modal-feature-icon"><i class="fa-solid fa-store"></i></div>
+                <div>
+                  <h4 class="modal-feature-name">Shop Ledger & Balance Tracking</h4>
+                  <p class="modal-feature-desc">Individual retail store directories with automated outstanding balance ledgers, transaction history, and credit terms.</p>
+                </div>
+              </div>
+
+              <div class="modal-feature-card">
+                <div class="modal-feature-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                <div>
+                  <h4 class="modal-feature-name">Sales, Invoices & Payment Tracking</h4>
+                  <p class="modal-feature-desc">Fast point-of-delivery invoice generation, cash/UPI payment collection logs, and outstanding balance settlement.</p>
+                </div>
+              </div>
+
+              <div class="modal-feature-card">
+                <div class="modal-feature-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                <div>
+                  <h4 class="modal-feature-name">Purchases & Supplier Management</h4>
+                  <p class="modal-feature-desc">Supplier directory, raw material replenishment orders, cost logging, and payables ledger tracking.</p>
+                </div>
+              </div>
+
+              <div class="modal-feature-card">
+                <div class="modal-feature-icon"><i class="fa-solid fa-rotate-left"></i></div>
+                <div>
+                  <h4 class="modal-feature-name">Returns Management</h4>
+                  <p class="modal-feature-desc">Return item processing from retail routes, credit note generation, and godown inventory adjustments.</p>
+                </div>
+              </div>
+
+              <div class="modal-feature-card">
+                <div class="modal-feature-icon"><i class="fa-solid fa-user-shield"></i></div>
+                <div>
+                  <h4 class="modal-feature-name">Admin Dashboard & RBAC</h4>
+                  <p class="modal-feature-desc">Role-based authentication guarding administrative functions, dispatch crew views, and revenue analytics.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-section">
+            <h3 class="modal-section-title"><i class="fa-solid fa-layer-group"></i> Architecture & Tech Stack</h3>
+            <div class="modal-tech-grid">
+              <div class="modal-tech-box">
+                <span class="modal-tech-category">Frontend Architecture</span>
+                <p class="modal-tech-detail">React, TypeScript, Tailwind CSS, Vite, Service Worker PWA support, Responsive mobile-first interface</p>
+              </div>
+              <div class="modal-tech-box">
+                <span class="modal-tech-category">Backend & API Services</span>
+                <p class="modal-tech-detail">Node.js, Express.js REST API architecture, JWT authentication, CORS, robust endpoint validations</p>
+              </div>
+              <div class="modal-tech-box">
+                <span class="modal-tech-category">Relational Database</span>
+                <p class="modal-tech-detail">PostgreSQL via Neon Serverless, connection pooling, relational schemas & indexed queries</p>
+              </div>
+              <div class="modal-tech-box">
+                <span class="modal-tech-category">Deployment & Cloud Infrastructure</span>
+                <p class="modal-tech-detail">Cloudflare Pages (Frontend edge CDN) and Render (Node.js web service)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <a href="https://kifa-foodco-management.pages.dev" class="project-link primary" target="_blank" rel="noopener noreferrer">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Live Application
+          </a>
+          <a href="https://github.com/ashique009/kifa-foodco-management" class="project-link secondary" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github"></i> Inspect GitHub Source
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Script Libraries via CDNs -->
   <!-- GSAP & ScrollTrigger -->
