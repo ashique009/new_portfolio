@@ -133,6 +133,7 @@ function initLenis(prefersReducedMotion) {
     touchMultiplier: 1.8,
     infinite: false,
   });
+  window.lenis = lenis;
 
   function raf(time) {
     if (lenis) lenis.raf(time);
@@ -1227,21 +1228,20 @@ function initMagneticButtons(prefersReducedMotion) {
    11. Project Details Modal System
    ========================================================================= */
 function initProjectModal() {
-  const modal = document.getElementById('kifa-modal');
-  if (!modal) return;
+  const modals = document.querySelectorAll('.project-modal');
+  if (!modals.length) return;
 
-  const openTriggers = document.querySelectorAll('.kifa-modal-trigger');
-  const closeBtn = document.getElementById('kifa-modal-close');
-  const backdrop = document.getElementById('kifa-modal-backdrop');
-
-  function openModal() {
-    modal.classList.add('active');
-    modal.setAttribute('aria-hidden', 'false');
+  function openModal(targetModal) {
+    if (!targetModal) return;
+    targetModal.classList.add('active');
+    targetModal.setAttribute('aria-hidden', 'false');
+    const content = targetModal.querySelector('.modal-content');
+    if (content) content.scrollTop = 0;
     document.body.style.overflow = 'hidden';
     if (window.lenis) window.lenis.stop();
     else if (lenis) lenis.stop();
 
-    const container = modal.querySelector('.modal-container');
+    const container = targetModal.querySelector('.modal-container');
     if (container) {
       gsap.fromTo(container,
         { scale: 0.92, y: 30, opacity: 0 },
@@ -1250,8 +1250,9 @@ function initProjectModal() {
     }
   }
 
-  function closeModal() {
-    const container = modal.querySelector('.modal-container');
+  function closeModal(targetModal) {
+    if (!targetModal) return;
+    const container = targetModal.querySelector('.modal-container');
     if (container) {
       gsap.to(container, {
         scale: 0.94,
@@ -1260,36 +1261,64 @@ function initProjectModal() {
         duration: 0.28,
         ease: "power2.in",
         onComplete: () => {
-          modal.classList.remove('active');
-          modal.setAttribute('aria-hidden', 'true');
-          document.body.style.overflow = '';
-          if (window.lenis) window.lenis.start();
-          else if (lenis) lenis.start();
+          targetModal.classList.remove('active');
+          targetModal.setAttribute('aria-hidden', 'true');
+          if (!document.querySelector('.project-modal.active')) {
+            document.body.style.overflow = '';
+            if (window.lenis) window.lenis.start();
+            else if (lenis) lenis.start();
+          }
         }
       });
     } else {
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      if (window.lenis) window.lenis.start();
-      else if (lenis) lenis.start();
+      targetModal.classList.remove('active');
+      targetModal.setAttribute('aria-hidden', 'true');
+      if (!document.querySelector('.project-modal.active')) {
+        document.body.style.overflow = '';
+        if (window.lenis) window.lenis.start();
+        else if (lenis) lenis.start();
+      }
     }
   }
 
-  openTriggers.forEach(trigger => {
+  // Bind KIFA modal triggers
+  document.querySelectorAll('.kifa-modal-trigger, [data-modal-target="#kifa-modal"]').forEach(trigger => {
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      openModal();
+      openModal(document.getElementById('kifa-modal'));
     });
   });
 
-  if (closeBtn) closeBtn.addEventListener('click', closeModal);
-  if (backdrop) backdrop.addEventListener('click', closeModal);
+  // Bind Ami modal triggers
+  document.querySelectorAll('.ami-modal-trigger, [data-modal-target="#ami-modal"]').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openModal(document.getElementById('ami-modal'));
+    });
+  });
 
+  // Bind close buttons and backdrop clicks on all modals
+  modals.forEach(m => {
+    const closeBtn = m.querySelector('.modal-close-btn');
+    const backdrop = m.querySelector('.modal-backdrop');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeModal(m);
+      });
+    }
+    if (backdrop) {
+      backdrop.addEventListener('click', () => closeModal(m));
+    }
+  });
+
+  // Global Escape key support
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
-      closeModal();
+    if (e.key === 'Escape') {
+      const activeModal = document.querySelector('.project-modal.active');
+      if (activeModal) closeModal(activeModal);
     }
   });
 }
